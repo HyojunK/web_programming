@@ -57,4 +57,5 @@
 		<jsp:include page="footer.jsp" />
 	</footer>
 </body>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 </html>

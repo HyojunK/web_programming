@@ -30,11 +30,11 @@
 			<h2 class="text-center">회원 가입</h2>
 			<form class="form-horizontal" action="regMember" method="post" style="padding-top: 20px;">
 				<div class="form-group">
-					<label for="id" class="col-sm-2 col-sm-offset-2 control-label">아이디</label>
-					<div class="col-sm-3">
+					<label for="id" class="col-sm-2 col-sm-offset-2 col-xs-12 control-label">아이디</label>
+					<div class="col-sm-3 col-xs-9">
 						<input type="text" class="form-control" name="m_id" id="id" required>
 					</div>
-					<div class="col-sm-1" style="padding-left: 0;">
+					<div class="col-sm-1 col-xs-3" style="padding-left: 0;">
 						<input type="button" class="btn btn-default" value="중복확인" onclick="idCheck()" required>
 					</div>
 				</div>
@@ -77,7 +77,7 @@
 				</div>
 				<div class="row" style="padding-top: 10px;">
 					<div class="col-sm-offset-4 col-sm-4">
-						<button type="reset" class="btn btn-default btn-block btn-lg">취소</button>
+						<input type="button" class="btn btn-default btn-block btn-lg" value="취소" onclick="javascript:history.back();">
 					</div>
 				</div>
 			</form>
@@ -87,6 +87,7 @@
 		<jsp:include page="footer.jsp" />
 	</footer>
 </body>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 <script type="text/javascript">
 //아이디 중복확인
 function idCheck(){

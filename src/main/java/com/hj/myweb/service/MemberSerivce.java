@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.hj.myweb.dao.BoardDao;
 import com.hj.myweb.dao.MemberDao;
 import com.hj.myweb.dto.MemberDto;
 
@@ -18,6 +19,9 @@ import lombok.extern.java.Log;
 public class MemberSerivce {
 	@Autowired
 	private MemberDao mDao;
+	
+	@Autowired
+	private BoardDao bDao;
 	
 	@Autowired
 	private HttpSession session;
@@ -104,30 +108,6 @@ public class MemberSerivce {
 		return view;
 	}
 	
-	//회원 탈퇴
-	public String resignMember(MemberDto member, RedirectAttributes rttr) {
-		String view = null;
-		String msg = null;
-		System.out.println("id : " + member.getM_id() + ", pwd : " + member.getM_pwd());
-		
-		String encPwd = mDao.getEncPwd(member.getM_id());
-		BCryptPasswordEncoder pwdEncoder = new BCryptPasswordEncoder();
-		
-		if(pwdEncoder.matches(member.getM_pwd(), encPwd)) {
-			mDao.resignMember(member.getM_id());
-			
-			view = "redirect:/";
-			msg = "탈퇴가 완료되었습니다";
-		}
-		else {
-			view = "redirect:resignFrm";
-			msg = "비밀번호가 일치하지 않습니다";
-		}
-		
-		rttr.addFlashAttribute("msg", msg);
-		return view;
-	}
-
 	//로그아웃
 	public String logout() {
 		session.invalidate();

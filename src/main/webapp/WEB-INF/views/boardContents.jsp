@@ -72,17 +72,17 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-2">
+				<div class="col-md-3">
 					<h3>
 						<small>작성자 : ${board.mname}</small>
 					</h3>
 				</div>
-				<div class="col-md-2">
+				<div class="col-md-2 col-xs-6">
 					<h3>
-						<small><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-DD HH:mm:ss"/></small>
+						<small><fmt:formatDate value="${board.bdate}" pattern="yyyy-MM-dd HH:mm:ss"/></small>
 					</h3>
 				</div>
-				<div class="col-md-offset-6 col-md-2 text-right">
+				<div class="col-md-offset-5 col-md-2 col-xs-6 text-right">
 					<h3>
 						<small>조회수 ${board.bviews}</small>
 					</h3>
@@ -172,6 +172,7 @@
 		<jsp:include page="footer.jsp" />
 	</footer>
 </body>
+<script type="text/javascript" src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/jquery.serializeObject.js"></script>
 <script type="text/javascript">
 function replyInsert(bnum){

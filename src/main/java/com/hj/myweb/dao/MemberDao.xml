@@ -17,8 +17,4 @@
 	<select id="getMemberInfo" parameterType="String" resultType="com.hj.myweb.dto.MemberDto">
 		SELECT * FROM MINFO WHERE M_ID=#{id}
 	</select>
-	<delete id="resignMember" parameterType="String">
-		DELETE FROM MEMBER
-		WHERE M_ID=#{id}
-	</delete>
 </mapper>

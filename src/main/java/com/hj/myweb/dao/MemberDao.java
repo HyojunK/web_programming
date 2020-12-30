@@ -11,6 +11,4 @@ public interface MemberDao {
 	public String getEncPwd(String id);
 	//로그인 후 사용할 사용자 정보 가져오기
 	public MemberDto getMemberInfo(String id);
-	//회원 탈퇴
-	public void resignMember(String id);
 }

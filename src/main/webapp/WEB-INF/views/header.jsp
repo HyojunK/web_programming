@@ -20,7 +20,6 @@
 			<li class="before-login"><a href="./loginFrm">로그인</a></li>
 			<li class="before-login"><a href="./joinFrm">회원가입</a></li>
 			<li class="after-login" id="mid"></li>
-			<li class="after-login"><a href="./resignFrm">회원탈퇴</a></li>
 			<li class="after-login"><a href="./logout">로그아웃</a></li>
 		</ul>
     </div><!-- /.navbar-collapse -->

@@ -81,19 +81,4 @@ public class HomeController {
 		return mServ.logout();
 	}
 	
-	//회원 탈퇴로 이동
-	@GetMapping("resignFrm")
-	public String resignFrm() {
-		logger.info("resignFrm()");
-		
-		return "resignFrm";
-	}
-	
-	//회원 탈퇴
-	@PostMapping("resignMember")
-	public String resignMember(MemberDto member, RedirectAttributes rttr) {
-		logger.info("resignMember()");
-		
-		return mServ.resignMember(member, rttr);
-	}
 }
