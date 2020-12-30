@@ -1,0 +1,15 @@
+@charset "UTF-8";
+/* bx-slider */
+.bx-wrapper {
+	margin: 0px auto;
+}
+
+/* boardList */
+th { text-align: center; }
+
+/* boardContents */
+#delicon { width: 15px; border: 1px solid #666; border-radius: 3px; padding: 2px;  }
+#delicon:hover { cursor: pointer; }
+
+/* glyphicon */
+.glyphicon-remove { border: 1px solid #aaa; border-radius: 5px; }

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.hj.myweb.dao.BoardDao">
+	<!-- 페이징 처리 -->
+	<select id="getBoardList" parameterType="Integer" resultType="com.hj.myweb.dto.BoardDto">
+		<![CDATA[
+		SELECT * FROM BLIST_1
+		WHERE RONUM >= (#{pageNum}*10)-9 AND RONUM <= (#{pageNum}*10)
+		]]>
+	</select>
+	
+	<!-- 전체 게시글 개수 가져오기 -->
+	<select id="getBoardCnt" resultType="int">
+		SELECT COUNT(*) FROM BLIST_1
+	</select>
+	
+	<!-- 게시글 내용 가져오기 -->
+	<select id="getContents" parameterType="Integer" resultType="com.hj.myweb.dto.BoardDto">
+		SELECT * FROM BLIST
+		WHERE BNUM=#{bnum}
+	</select>
+	
+	<!-- 게시글 파일 목록 가져오기 -->
+	<select id="getBfList" parameterType="Integer" resultType="com.hj.myweb.dto.BfileDto">
+		SELECT * FROM BF
+		WHERE BF_BNUM=#{bnum}
+	</select>
+	
+	<!-- 게시글 댓글 목록 가져오기 -->
+	<select id="getReplyList" parameterType="Integer" resultType="com.hj.myweb.dto.ReplyDto">
+		SELECT * FROM RLIST
+		WHERE R_BNUM=#{bnum}
+	</select>
+	
+	<!-- 게시글 저장 -->
+	<insert id="boardInsert" parameterType="com.hj.myweb.dto.BoardDto" useGeneratedKeys="true" keyProperty="bnum">
+	<selectKey keyProperty="bnum" resultType="int" order="BEFORE">
+		SELECT BOARD_SEQ.NEXTVAL FROM DUAL
+	</selectKey>
+		INSERT INTO B
+		VALUES (${bnum}, #{btitle}, #{bcontents}, #{bid}, DEFAULT, DEFAULT)
+	</insert>
+	
+	<!-- 게시글 파일 저장 -->
+	<insert id="fileInsert" parameterType="HashMap">
+		INSERT INTO BF
+		VALUES (BF_SEQ.NEXTVAL,#{bnum},#{oriName},#{sysName})
+	</insert>
+	
+	<!-- 게시글 댓글 저장 -->
+	<insert id="replyInsert" parameterType="com.hj.myweb.dto.ReplyDto">
+		INSERT INTO R
+		VALUES(REPLY_SEQ.NEXTVAL,#{r_bnum},#{r_contents},#{r_id},DEFAULT)
+	</insert>
+	
+	<!-- 파일 원래 이름 구하기 -->
+	<select id="getOriName" parameterType="String" resultType="String">
+		SELECT BF_ORINAME FROM BF
+		WHERE BF_SYSNAME=#{sysName}
+	</select>
+	
+	<!-- 게시글 수정 -->
+	<update id="boardUpdate">
+		UPDATE B
+		SET B_TITLE=#{btitle}, B_CONTENTS=#{bcontents}, B_DATE=SYSDATE
+		WHERE B_NUM=#{bnum}
+	</update>
+	
+	<!-- 조회수 증가 -->
+	<update id="viewUp" parameterType="int">
+		UPDATE B
+		SET B_VIEWS = B_VIEWS + 1
+		WHERE B_NUM=#{bnum}
+	</update>
+	
+	<!-- 포인트 증가 -->
+	<update id="pointUp" parameterType="HashMap">
+		UPDATE M
+		SET M_POINT=M_POINT+${point}
+		WHERE M_ID=#{id}
+	</update>
+	
+	<!-- 파일 개별 삭제 -->
+	<delete id="delFile" parameterType="String">
+		DELETE FROM BF
+		WHERE BF_SYSNAME=#{sysname}
+	</delete>
+	
+	<!-- 댓글 전체 삭제 -->
+	<delete id="delReply" parameterType="Integer">
+		DELETE FROM R
+		WHERE R_BNUM=#{bnum}
+	</delete>
+	
+	<!-- 파일 전체 삭제 -->
+	<delete id="delFileList" parameterType="Integer">
+		DELETE FROM BF
+		WHERE BF_BNUM=#{bnum}
+	</delete>
+	
+	<!-- 게시글 삭제 -->
+	<delete id="delBoard" parameterType="Integer">
+		DELETE FROM B
+		WHERE B_NUM=#{bnum}
+	</delete>
+	
+</mapper>
