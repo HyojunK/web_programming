@@ -6,7 +6,7 @@
 * [개발 환경](https://github.com/HyojunK/web_programming/tree/master#%EA%B0%9C%EB%B0%9C-%ED%99%98%EA%B2%BD)
 * [주요 기능 및 실행 화면](https://github.com/HyojunK/web_programming/tree/master#%EC%A3%BC%EC%9A%94-%EA%B8%B0%EB%8A%A5-%EB%B0%8F-%EC%8B%A4%ED%96%89-%ED%99%94%EB%A9%B4)
 * [컨트롤러 구성](https://github.com/HyojunK/web_programming/tree/master#%EC%BB%A8%ED%8A%B8%EB%A1%A4%EB%9F%AC-%EA%B5%AC%EC%84%B1)
-* [Util 패키지 구성](https://github.com/HyojunK/web_programming/tree/master#util-%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%84%B1)
+* [Util 패키지 구성](https://github.com/HyojunK/web_programming/tree/master#dao-%EA%B5%AC%EC%84%B1)
 * [DAO 구성](https://github.com/HyojunK/web_programming/tree/master#util-%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B5%AC%EC%84%B1)
 * [Database 구성](https://github.com/HyojunK/web_programming/tree/master#database-%EA%B5%AC%EC%84%B1)
 
